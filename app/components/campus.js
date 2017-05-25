@@ -16,6 +16,14 @@ export default function Campus (props) {
               <span className="edit-button"><i className="fa fa-pencil"></i></span>
               <p>{ selectedCampus.location }</p>
               <p>{ selectedCampus.description }</p>
+              <p>Students:</p>
+              <ul>
+              {
+                selectedCampus.students && selectedCampus.students.map(student => (
+                    <li key={ student.id }><Link to={`/student/${student.id}`}>{ student.name }</Link></li>
+                ))
+              }
+              </ul>
             </div>
         </div>
       </div>

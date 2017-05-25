@@ -11,12 +11,10 @@ export default function Students (props) {
             {
               props.students && props.students.map(student => (
                 <div key={ student.id }>
-                  <img src="http://placehold.it/100x100" alt="" />
-                  <h5>{ student.name }</h5>
-                  <span className="del-button" onClick={ () => props.removeStudent(student.id) }><i className="fa fa-trash"></i></span>
-                  <Link to={`/student/${student.id}`}><span className="edit-button"><i className="fa fa-eye"></i></span></Link>
-                  <p>{ student.email }</p>
-                  <p>Studies at: { student.campus.name }</p>
+                  <h5>{ student.name }
+                    <span className="del-button" onClick={ () => props.removeStudent(student.id) }><i className="fa fa-trash"></i></span>
+                    <Link to={`/student/${student.id}`}><span className="edit-button"><i className="fa fa-pencil"></i></span></Link>
+                  </h5>
                 </div>
               ))
             }

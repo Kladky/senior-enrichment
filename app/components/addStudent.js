@@ -4,10 +4,11 @@ export default function NewStudent (props) {
 
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
-  const nameValue = props.nameValue;
-  const emailValue = props.emailValue;
   const campusList = props.list;
-  const selectedCampus = props.campusId;
+
+  let nameValue = props.nameValue;
+  let emailValue = props.emailValue;
+  let selectedCampus = props.campusId;
 
   return (
     <div>

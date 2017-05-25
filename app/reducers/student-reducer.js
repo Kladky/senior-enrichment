@@ -4,9 +4,11 @@ import {
   DELETE_STUDENT,
   ADD_STUDENT,
   getStudents,
+  getStudentById,
   addStudent,
   deleteStudent
 } from '../action-creators/students';
+import { getCampuses } from '../action-creators/campuses';
 
 import axios from 'axios';
 
@@ -62,4 +64,25 @@ export const createStudent = studentInfo => dispatch => {
     })
   })
   .catch(err => console.error(`Adding student: ${studentInfo.name} unsuccessful`, err));
+};
+
+export const editStudent = studentInfo => dispatch => {
+  axios.put(`/api/students/${studentInfo.id}`, studentInfo.updateInfo)
+  .then(student => {
+    //update the students list on the state:
+    axios.get('/api/students')
+    .then(response => response.data)
+    .then(students => {
+      dispatch(getStudents(students))
+    })
+    //update the selected student on the state:
+    dispatch(getStudentById(student.data.id))
+    //update the campuses list on the state:
+    axios.get('/api/campuses')
+    .then(response => response.data)
+    .then(campuses => {
+      dispatch(getCampuses(campuses))
+    })
+  })
+  .catch(err => console.error(`Modifying student: ${studentInfo.name} unsuccessful`, err));
 };
