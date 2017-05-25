@@ -10,6 +10,15 @@ export const getCampuses = campuses => ({
     campuses
 });
 
+export const getCampusById = campusId => {
+  return dispatch => {
+    axios.get(`/api/campuses/${campusId}`)
+      .then(response => {
+        dispatch(getCampus(response.data));
+      });
+  };
+};
+
 export const getCampus = campus => ({
     type: GET_CAMPUS,
     campus

@@ -11,7 +11,9 @@ export default function Campuses (props) {
             {
               props.campuses && props.campuses.map(campus => (
                 <div key={ campus.id }>
-                  <h5>{ campus.name } <button className="del-button" onClick={ () => props.removeCampus(campus.id) }>X</button></h5>
+                  <h5>{ campus.name }</h5>
+                  <span className="del-button" onClick={ () => props.removeCampus(campus.id) }><i className="fa fa-trash"></i></span>
+                  <Link to={`/campus/${campus.id}`}><span className="edit-button"><i className="fa fa-eye"></i></span></Link>
                   <p>{ campus.location }</p>
                   <p>{ campus.description }</p>
                   <ul>

@@ -13,7 +13,7 @@ import CampusContainer from './containers/CampusContainer';
 import StudentContainer from './containers/StudentContainer';
 
 import { getStudents, getStudentById } from './action-creators/students';
-import { getCampuses, getCampus } from './action-creators/campuses';
+import { getCampuses, getCampusById } from './action-creators/campuses';
 
 const onAppEnter = () => {
   const gStudents = axios.get('/api/students');
@@ -33,6 +33,11 @@ const onStudentEnter = function (nextRouterState) {
   store.dispatch(getStudentById(studentId));
 };
 
+const onCampusEnter = function (nextRouterState) {
+  const campusId = nextRouterState.params.campusId;
+  store.dispatch(getCampusById(campusId));
+};
+
 export default function App () {
   return (
     <Provider store={store}>
@@ -41,6 +46,7 @@ export default function App () {
           <Route path="/students" component={StudentsContainer}/>
           <Route path="/campuses" component={CampusesContainer}/>
           <Route path="/student/:studentId" component={StudentContainer} onEnter={onStudentEnter}/>
+          <Route path="/campus/:campusId" component={CampusContainer} onEnter={onCampusEnter}/>
         </Route>
       </Router>
     </Provider>
