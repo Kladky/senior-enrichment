@@ -8,7 +8,10 @@ import {
   addStudent,
   deleteStudent
 } from '../action-creators/students';
-import { getCampuses } from '../action-creators/campuses';
+import {
+  getCampuses,
+  getCampusById
+} from '../action-creators/campuses';
 
 import axios from 'axios';
 
@@ -51,7 +54,15 @@ export default function (state = initialStudentState, action) {
 export const removeStudent = id => dispatch => {
   dispatch(deleteStudent(id));
   axios.delete(`/api/students/${id}`)
-       .catch(err => console.error(`Removing student: ${id} unsuccessful`, err));
+  .then (() => {
+    //update the campuses list on the state:
+    axios.get('/api/campuses')
+    .then(response => response.data)
+    .then(campuses => {
+      dispatch(getCampuses(campuses))
+    })
+  })
+  .catch(err => console.error(`Removing student: ${id} unsuccessful`, err));
 };
 
 export const createStudent = studentInfo => dispatch => {

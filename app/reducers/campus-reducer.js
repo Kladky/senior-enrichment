@@ -4,9 +4,11 @@ import {
   DELETE_CAMPUS,
   ADD_CAMPUS,
   getCampuses,
+  getCampusById,
   deleteCampus,
   addCampus
 } from '../action-creators/campuses';
+import { getStudents } from '../action-creators/students';
 
 import axios from 'axios';
 
@@ -62,4 +64,25 @@ export const createCampus = campusInfo => dispatch => {
     })
   })
   .catch(err => console.error(`Adding campus: ${campusInfo.name} unsuccessful`, err));
+};
+
+export const editCampus = campusInfo => dispatch => {
+  axios.put(`/api/campuses/${campusInfo.id}`, campusInfo.updateInfo)
+  .then(campus => {
+    //update the students list on the state:
+    axios.get('/api/students')
+    .then(response => response.data)
+    .then(students => {
+      dispatch(getStudents(students))
+    })
+    //update the selected student on the state:
+    dispatch(getCampusById(campus.data.id))
+    //update the campuses list on the state:
+    axios.get('/api/campuses')
+    .then(response => response.data)
+    .then(campuses => {
+      dispatch(getCampuses(campuses))
+    })
+  })
+  .catch(err => console.error(`Modifying campus: ${campusInfo.name} unsuccessful`, err));
 };

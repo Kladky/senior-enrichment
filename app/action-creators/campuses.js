@@ -4,6 +4,7 @@ export const GET_CAMPUSES = 'GET_CAMPUSES';
 export const GET_CAMPUS = 'GET_CAMPUS';
 export const DELETE_CAMPUS = 'DELETE_CAMPUS';
 export const ADD_CAMPUS = 'ADD_CAMPUS';
+export const EDIT_CAMPUS = 'EDIT_CAMPUS';
 
 export const getCampuses = campuses => ({
     type: GET_CAMPUSES,

@@ -29,16 +29,19 @@ router.get('/:campusId', function (req, res, next) {
     })
 })
 
-// router.put('/:campusId', function (req, res, next) {
-//     Campus.findById(req.params.campusId)
-//     .then(campus => {
-//         if(campus) {
-//             campus.destroy()
-//             .then(() => res.status(204).send())
-//         } else res.status(404).send();
-//     })
-//     .catch(next);
-// })
+router.put('/:campusId', function (req, res, next) {
+    Campus.findOne({
+        where: { id: req.params.campusId },
+        include: [Student]
+    })
+    .then(campus => {
+        return campus.update(req.body)
+    })
+    .then((campus) => {
+        res.json(campus);
+    })
+    .catch(next);
+})
 
 router.delete('/:campusId', function (req, res, next) {
     Campus.findById(req.params.campusId)

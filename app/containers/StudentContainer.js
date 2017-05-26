@@ -3,8 +3,6 @@ import Student from '../components/Student';
 import { connect } from 'react-redux';
 import { removeStudent, editStudent } from '../reducers/student-reducer';
 
-// girl don't forget to make editStudent tho
-
 const mapStateToProps = (state) => {
   return {
     students: state.student.list,

@@ -64,7 +64,7 @@ export default function Student (props) {
                   <button
                     type="submit"
                   >
-                    Edit student
+                    Save edits
                   </button>
                 </div>
               </div>
