@@ -10,8 +10,6 @@ export default function NewStudent (props) {
   let emailValue = props.emailValue;
   let selectedCampus = props.campusId;
 
-  console.log(selectedCampus);
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -50,7 +48,7 @@ export default function NewStudent (props) {
                 className="form-control"
                 id="campus"
                 required
-                value={selectedCampus !== 0 ? selectedCampus : null}
+                value={selectedCampus !== 0 ? selectedCampus : undefined}
                 onChange={handleChange}>
                   {
                     campusList && campusList.map(campus => (

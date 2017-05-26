@@ -23,6 +23,11 @@ module.exports = app
 
   // notice the use of `_` as the first parameter above. This is a pattern for parameters that must exist, but you don't use or reference (or need) in the function body that follows.
 
+//set up the main error handler for the app:
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500).send(err.message || 'bad news....');
+})
+
 if (module === require.main) {
   // Start listening only if we're the main module.
 

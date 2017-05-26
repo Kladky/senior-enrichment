@@ -9,7 +9,8 @@ router.get('/', function (req, res, next) {
         include: [Campus]
     })
     .then((students) => {
-        res.json(students);
+        if(students) res.json(students);
+        else next(new Error("Problem in get /api/students/"));
     })
     .catch(next);
 })
@@ -17,11 +18,13 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
     Campus.findById(req.body.campusId)
     .then(campus => {
-        return campus.createStudent({
-            name: req.body.name,
-            email:req.body.email,
-            campusId: campus.id
-        })
+        if(campus) {
+            return campus.createStudent({
+                name: req.body.name,
+                email:req.body.email,
+                campusId: campus.id
+            })
+        } else next(new Error("Problem in post /api/students/"));
     })
     .then(student => res.status(201).json(student))
     .catch(next);
@@ -33,7 +36,8 @@ router.get('/:studentId', function (req, res, next) {
         include: [Campus]
     })
     .then((student) => {
-        res.json(student);
+        if(student) res.json(student);
+        else next(new Error("Problem in get /api/students/studentId"));
     })
     .catch(next);
 })
@@ -44,9 +48,11 @@ router.put('/:studentId', function (req, res, next) {
         include: [Campus]
     })
     .then(student => {
-        Campus.findById(req.body.campusId)
-        .then(campus => campus.addStudent([student]))
-        return student.update(req.body)
+        if(student) {
+            Campus.findById(req.body.campusId)
+            .then(campus => campus.addStudent([student]))
+            return student.update(req.body)
+        } else next(new Error("Problem in put /api/students/studentId"));
     })
     .then((student) => {
         res.json(student);
@@ -60,7 +66,7 @@ router.delete('/:studentId', function (req, res, next) {
         if(student) {
             student.destroy()
             .then(() => res.status(204).send())
-        } else res.status(404).send();
+        } else next(new Error("Problem in delete /api/students/studentId"));
     })
     .catch(next);
 })

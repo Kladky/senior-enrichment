@@ -9,8 +9,10 @@ router.get('/', function (req, res, next) {
         include: [Student]
     })
     .then((campuses) => {
-        res.json(campuses);
+        if(campuses) res.json(campuses);
+        else next(new Error("Problem in get /api/campuses/"));
     })
+    .catch(next);
 })
 
 router.post('/', function (req, res, next) {
@@ -25,8 +27,10 @@ router.get('/:campusId', function (req, res, next) {
         include: [Student]
     })
     .then((campus) => {
-        res.json(campus);
+        if(campus) res.json(campus);
+        else next(new Error("Problem in get /api/campuses/campusId"));
     })
+    .catch(next);
 })
 
 router.put('/:campusId', function (req, res, next) {
@@ -35,7 +39,8 @@ router.put('/:campusId', function (req, res, next) {
         include: [Student]
     })
     .then(campus => {
-        return campus.update(req.body)
+        if(campus) return campus.update(req.body)
+        else next(new Error("Problem in put /api/campuses/campusId"));
     })
     .then((campus) => {
         res.json(campus);
@@ -49,7 +54,7 @@ router.delete('/:campusId', function (req, res, next) {
         if(campus) {
             campus.destroy()
             .then(() => res.status(204).send())
-        } else res.status(404).send();
+        } else next(new Error("Problem in delete /api/campuses/campusId"));
     })
     .catch(next);
 })
