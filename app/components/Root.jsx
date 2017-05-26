@@ -5,7 +5,7 @@ export default function App ({ children }) {
   return (
     <div id="main" className="container-fluid">
         <Nav />
-        <div className="col-xs-10">
+        <div className="main-container">
           { children }
         </div>
     </div>

@@ -2,12 +2,11 @@ import {
   GET_STUDENTS,
   GET_STUDENT,
   DELETE_STUDENT,
-  ADD_STUDENT,
   getStudents,
   getStudentById,
-  addStudent,
   deleteStudent
 } from '../action-creators/students';
+
 import {
   getCampuses,
   getCampusById
@@ -15,11 +14,13 @@ import {
 
 import axios from 'axios';
 
+// Inside of "student" on the state, there will be two properties:
 const initialStudentState = {
   selected: {},
   list: []
 };
 
+// Set up the reducer:
 export default function (state = initialStudentState, action) {
 
   const newState = Object.assign({}, state);
@@ -38,10 +39,6 @@ export default function (state = initialStudentState, action) {
       newState.list = state.list.filter(student => student.id !== action.student);
       break;
 
-    case ADD_STUDENT:
-      newState.list.push(action.student);
-      break;
-
     default:
       return state;
 
@@ -50,6 +47,8 @@ export default function (state = initialStudentState, action) {
   return newState;
 
 }
+
+// Dispatch methods:
 
 export const removeStudent = id => dispatch => {
   dispatch(deleteStudent(id));
@@ -60,11 +59,13 @@ export const removeStudent = id => dispatch => {
 export const createStudent = studentInfo => dispatch => {
   axios.post(`/api/students`, studentInfo)
   .then(student => {
+    //update the students list on the state:
     axios.get('/api/students')
     .then(response => response.data)
     .then(students => {
       dispatch(getStudents(students))
     })
+    //update the current campus in case student is being added from that view
     dispatch(getCampusById(studentInfo.campusId))
   })
   .catch(err => console.error(`Adding student: ${studentInfo.name} unsuccessful`, err));

@@ -1,20 +1,20 @@
 import React from 'react';
 
 export default function NewStudent (props) {
-
+  // Set some variables to access the props succinctly:
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
   const campusList = props.list;
-
   let nameValue = props.nameValue;
   let emailValue = props.emailValue;
   let selectedCampus = props.campusId;
 
+  // Return the form for adding a student:
   return (
-    <div>
+    <div className="form-wrapper">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <legend>New Student</legend>
+          <legend>Add student</legend>
           <div className="form-group">
             <label>Name</label>
             <div>
@@ -22,7 +22,7 @@ export default function NewStudent (props) {
                 id="nameValue"
                 type="text"
                 required
-                placeholder="Your name"
+                placeholder="Student name"
                 onChange={handleChange}
                 value={nameValue}
               />

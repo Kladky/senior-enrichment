@@ -5,19 +5,22 @@ import { Link } from 'react-router';
 export default function Students (props) {
     return (
       <div>
-          <h4>THIS IS THE STUDENTS</h4>
+          <h1>Student directory</h1>
           <NewStudentContainer />
           <div>
+            <h2>Student list:</h2>
+            <ul>
             {
               props.students && props.students.map(student => (
                 <div key={ student.id }>
-                  <h5>{ student.name }
+                  <li>{ student.name }
                     <span className="del-button" onClick={ () => props.removeStudent(student.id) }><i className="fa fa-trash"></i></span>
                     <Link to={`/student/${student.id}`}><span className="edit-button"><i className="fa fa-pencil"></i></span></Link>
-                  </h5>
+                  </li>
                 </div>
               ))
             }
+            </ul>
           </div>
         </div>
     );

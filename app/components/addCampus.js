@@ -1,15 +1,16 @@
 import React from 'react';
 
 export default function NewCampus (props) {
-
+  // Set some variables to access the props succinctly:
   const handleChange = props.handleChange;
   const handleSubmit = props.handleSubmit;
   const nameValue = props.nameValue;
   const locationValue = props.locationValue;
   const descriptionValue = props.descriptionValue;
 
+  //Return the form for adding a campus
   return (
-    <div>
+    <div className="form-wrapper">
       <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>New Campus</legend>

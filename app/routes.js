@@ -15,6 +15,8 @@ import StudentContainer from './containers/StudentContainer';
 import { getStudents, getStudentById } from './action-creators/students';
 import { getCampuses, getCampusById } from './action-creators/campuses';
 
+// Get data for initial app state:
+
 const onAppEnter = () => {
   const gStudents = axios.get('/api/students');
   const gCampuses = axios.get('/api/campuses');
@@ -28,6 +30,8 @@ const onAppEnter = () => {
     });
 };
 
+// When entering a student/campus specific view, get their data:
+
 const onStudentEnter = function (nextRouterState) {
   const studentId = nextRouterState.params.studentId;
   store.dispatch(getStudentById(studentId));
@@ -38,6 +42,8 @@ const onCampusEnter = function (nextRouterState) {
   store.dispatch(getCampusById(campusId));
 };
 
+//Set up routes so that children will render inside the root:
+
 export default function App () {
   return (
     <Provider store={store}>
@@ -47,6 +53,7 @@ export default function App () {
           <Route path="/campuses" component={CampusesContainer}/>
           <Route path="/student/:studentId" component={StudentContainer} onEnter={onStudentEnter}/>
           <Route path="/campus/:campusId" component={CampusContainer} onEnter={onCampusEnter}/>
+          <IndexRedirect to="/campuses"/>
         </Route>
       </Router>
     </Provider>

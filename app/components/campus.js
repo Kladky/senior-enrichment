@@ -14,60 +14,63 @@ export default function Campus (props) {
 
     return (
       <div>
-        <h4>THIS IS THE CAMPUS</h4>
-        <form onSubmit={handleSubmit}>
-          <fieldset>
-            <legend>Edit Campus</legend>
-            <div className="form-group">
-              <label>Name</label>
-              <div>
-                <input
-                  id="nameValue"
-                  type="text"
-                  required
-                  onChange={handleChange}
-                  value={nameValue}
-                />
+        <h1>{ selectedCampus.name }</h1>
+        <div className="form-wrapper">
+          <form onSubmit={handleSubmit}>
+            <fieldset>
+              <legend>Edit campus</legend>
+              <div className="form-group">
+                <label>Name</label>
+                <div>
+                  <input
+                    id="nameValue"
+                    type="text"
+                    required
+                    onChange={handleChange}
+                    value={nameValue}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="form-group">
-              <label>Location</label>
-              <div>
-                <input
-                  id="locationValue"
-                  type="text"
-                  onChange={handleChange}
-                  value={locationValue}
-                />
+              <div className="form-group">
+                <label>Location</label>
+                <div>
+                  <input
+                    id="locationValue"
+                    type="text"
+                    onChange={handleChange}
+                    value={locationValue}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="form-group">
-              <label>Description</label>
-              <div>
-                <input
-                  id="descriptionValue"
-                  type="text"
-                  onChange={handleChange}
-                  value={descriptionValue}
-                />
+              <div className="form-group">
+                <label>Description</label>
+                <div>
+                  <input
+                    id="descriptionValue"
+                    type="text"
+                    onChange={handleChange}
+                    value={descriptionValue}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="form-group">
-              <div>
-                <button
-                  type="submit"
-                >
-                  Save edits
-                </button>
+              <div className="form-group">
+                <div>
+                  <button
+                    type="submit"
+                  >
+                    Save edits
+                  </button>
+                </div>
               </div>
-            </div>
-          </fieldset>
-        </form>
+            </fieldset>
+          </form>
+        </div>
+        <NewStudentContainer />
         <div>
             <div>
-              <h5>{ selectedCampus.name }</h5>
-              <p>{ selectedCampus.location }</p>
-              <p>{ selectedCampus.description }</p>
+              <h2>Campus details:</h2>
+              <p>Location: { selectedCampus.location }</p>
+              <p>Description: { selectedCampus.description }</p>
               <p>Students:</p>
               <ul>
               {
@@ -77,7 +80,6 @@ export default function Campus (props) {
               }
               </ul>
             </div>
-            <NewStudentContainer />
         </div>
       </div>
     );

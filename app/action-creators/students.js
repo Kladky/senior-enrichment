@@ -1,10 +1,13 @@
 import axios from 'axios';
 
+// Actions:
+
 export const GET_STUDENTS = 'GET_STUDENTS';
 export const GET_STUDENT = 'GET_STUDENT';
 export const DELETE_STUDENT = 'DELETE_STUDENT';
-export const ADD_STUDENT = 'ADD_STUDENT';
 export const EDIT_STUDENT = 'EDIT_STUDENT';
+
+// Action creators:
 
 export const getStudents = students => ({
     type: GET_STUDENTS,
@@ -28,9 +31,4 @@ export const getStudent = student => ({
 export const deleteStudent = student => ({
     type: DELETE_STUDENT,
     student
-});
-
-export const addStudent = student => ({
-    type: ADD_STUDENT,
-    student: student.data
 });

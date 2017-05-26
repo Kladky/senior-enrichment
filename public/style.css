@@ -1,17 +1,139 @@
+/* -------------- Basic STYLES -------------- */
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #F56476;
+    color: #fff;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+}
+
+#main {
+    padding: 0 40px;
+}
+
+.main-container {
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+p {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px
+}
+
+a, span {
+    color: #34F6F2;
+}
+
+/* -------------- NAV STYLES -------------- */
+
+.navbar {
+    width: 100%;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+.navbar a {
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* -------------- FORM STYLES -------------- */
+
+.form-wrapper {
+    display: inline-block;
+}
+
+legend {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 20px
+}
+
+input, select {
+    border: none;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 3px;
+    color: #008DD5;
+    width: 250px;
+    margin: 10px 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+  border: 2px solid #34F6F2;
+  border-radius: 24px;
+  background: none;
+  color: #34F6F2;
+  font-size: 16px;
+  padding: 10px;
+}
+
+button:hover, button:focus {
+  background: #fff;
+  color: #F56476;
+  border: 2px solid #FFF;
+  cursor: pointer;
+}
+
+button:active, button:focus {
+    box-shadow: none;
+}
+
+fieldset {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #fff;
+    padding: 30px;
+    margin-right: 10px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #A2D5EF;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #A2D5EF;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #A2D5EF;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #A2D5EF;
+}
+
 /* -------------- ICON STYLES -------------- */
 
 .hide {
     display:none;
 }
 
-h5 a, h5 span {
+li a, li span {
     padding-right: 5px;
 }
 
-h5 span, .del-button {
+li span, .del-button {
     padding-left: 5px;
 }
 
-h5 span:hover {
+li span:hover {
     cursor: pointer;
 }

@@ -6,19 +6,22 @@ export default function Campuses (props) {
     console.log(props.campuses);
     return (
         <div>
-          <h4>THIS IS THE CAMPUSES</h4>
+          <h1>Campus directory</h1>
           <NewCampusContainer />
           <div>
+            <h2>Campus list:</h2>
+            <ul>
             {
               props.campuses && props.campuses.map(campus => (
                 <div key={ campus.id }>
-                  <h5>{ campus.name }
-                    <span className={campus.students.length > 0 ? "del-button hide" : "del-button"} onClick={ () => props.removeCampus(campus.id) }><i className="fa fa-trash"></i></span>
+                  <li>{ campus.name }
                     <Link to={`/campus/${campus.id}`}><span className="edit-button"><i className="fa fa-pencil"></i></span></Link>
-                  </h5>
+                    <span className={campus.students.length > 0 ? "del-button hide" : "del-button"} onClick={ () => props.removeCampus(campus.id) }><i className="fa fa-trash"></i></span>
+                  </li>
                 </div>
               ))
             }
+            </ul>
           </div>
         </div>
     );

@@ -2,21 +2,21 @@ import {
   GET_CAMPUSES,
   GET_CAMPUS,
   DELETE_CAMPUS,
-  ADD_CAMPUS,
   getCampuses,
   getCampusById,
   deleteCampus,
-  addCampus
 } from '../action-creators/campuses';
 import { getStudents } from '../action-creators/students';
 
 import axios from 'axios';
 
+// Inside of "campus" on the state, there will be two properties:
 const initialCampusState = {
   selected: {},
   list: []
 };
 
+// Set up the reducer:
 export default function (state = initialCampusState, action) {
 
   const newState = Object.assign({}, state);
@@ -35,10 +35,6 @@ export default function (state = initialCampusState, action) {
       newState.list = state.list.filter(campus => campus.id !== action.campus);
       break;
 
-    case ADD_CAMPUS:
-      newState.list.push(action.campus);
-      break;
-
     default:
       return state;
 
@@ -47,6 +43,8 @@ export default function (state = initialCampusState, action) {
   return newState;
 
 }
+
+// Dispatch methods:
 
 export const removeCampus = id => dispatch => {
   dispatch(deleteCampus(id));
@@ -57,6 +55,7 @@ export const removeCampus = id => dispatch => {
 export const createCampus = campusInfo => dispatch => {
   axios.post(`/api/campuses`, campusInfo)
   .then(campus => {
+    //update the campuses list on the state:
     axios.get('/api/campuses')
     .then(response => response.data)
     .then(campuses => {
