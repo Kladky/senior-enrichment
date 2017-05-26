@@ -6,6 +6,7 @@ import axios from 'axios';
 import store from './store';
 
 import Root from './components/Root';
+import WrongPage from './components/404';
 
 import CampusesContainer from './containers/CampusesContainer';
 import StudentsContainer from './containers/StudentsContainer';
@@ -54,6 +55,7 @@ export default function App () {
           <Route path="/student/:studentId" component={StudentContainer} onEnter={onStudentEnter}/>
           <Route path="/campus/:campusId" component={CampusContainer} onEnter={onCampusEnter}/>
           <IndexRedirect to="/campuses"/>
+          <Route path='*' component={WrongPage} />
         </Route>
       </Router>
     </Provider>
