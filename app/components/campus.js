@@ -68,14 +68,14 @@ export default function Campus (props) {
         <NewStudentContainer />
         <div>
             <div>
-              <h2>Campus details:</h2>
+              <h2>{ selectedCampus.name }'s details:</h2>
               <p>Location: { selectedCampus.location || "no location?!?!" }</p>
               <p>Description: { selectedCampus.description || "no description?!?!" }</p>
               <p>Students:</p>
               <ul>
               {
                 students && students.map(student => (
-                    <li key={ student.id }><Link to={`/student/${student.id}`}>{ student.name }</Link> <span className="del-button"><i className="fa fa-trash" id={ student.id } onClick={handleChange}></i></span></li>
+                    <li key={ student.id }><Link to={`/student/${student.id}`}>{ student.name }</Link> <span title="delete" className="del-button"><i className="fa fa-trash" id={ student.id } onClick={handleChange}></i></span></li>
                 ))
               }
               </ul>

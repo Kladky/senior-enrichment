@@ -73,7 +73,7 @@ export default function Student (props) {
         </div>
         <div>
             <div>
-              <h2>Student Info:</h2>
+              <h2>{ selectedStudent.name }'s Info:</h2>
               <p>Email: { selectedStudent.email }</p>
               <p>Studies at:
                 <Link to={`/campus/${selectedStudent.campus && selectedStudent.campus.id}`}> { selectedStudent.campus && selectedStudent.campus.name }</Link>

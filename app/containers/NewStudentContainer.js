@@ -24,7 +24,7 @@ class NewStudentContainer extends Component {
     this.state = {
       nameValue: '',
       emailValue: '',
-      campusId: 0
+      campusId: 1
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -58,6 +58,7 @@ class NewStudentContainer extends Component {
 
   handleSubmit (evt) {
     evt.preventDefault();
+    console.log("id from student create:", this.state.campusId);
     this.props.createStudent({
       name: this.state.nameValue,
       email: this.state.emailValue,
