@@ -33,7 +33,8 @@ class CampusContainer extends Component {
       nameValue: '',
       locationValue: '',
       descriptionValue: '',
-      campusId: 0
+      campusId: 0,
+      students: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -45,7 +46,8 @@ class CampusContainer extends Component {
           nameValue: newProps.selected.name,
           locationValue: newProps.selected.location,
           descriptionValue: newProps.selected.description,
-          campusId: newProps.selected.id
+          campusId: newProps.selected.id,
+          students: newProps.selected.students
         });
     }
 
@@ -65,6 +67,13 @@ class CampusContainer extends Component {
       this.setState({
         descriptionValue: value
       });
+    }
+    if(evt.target.tagName === "I") {
+        let newStudentList = this.state.students.filter(student => student.id != evt.target.id);
+        this.setState({
+            students: newStudentList
+        });
+        this.props.removeStudent(evt.target.id);
     }
   }
 

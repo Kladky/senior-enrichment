@@ -20,6 +20,7 @@ export default function NewCampus (props) {
                 id="nameValue"
                 type="text"
                 required
+                placeholder="Campus name"
                 onChange={handleChange}
                 value={nameValue}
               />

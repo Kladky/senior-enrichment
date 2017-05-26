@@ -31,6 +31,12 @@ class NewStudentContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillReceiveProps (newProps, oldProps) {
+      this.setState({
+        campusId: newProps.list[0].id,
+      });
+  }
+
   handleChange (evt) {
     const value = evt.target.value;
     if(evt.target.id === 'nameValue'){
@@ -60,7 +66,7 @@ class NewStudentContainer extends Component {
     this.setState({
       nameValue: '',
       emailValue: '',
-      campusId: 0
+      campusId: this.props.list[0].id
     });
   }
 

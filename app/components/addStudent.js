@@ -10,6 +10,8 @@ export default function NewStudent (props) {
   let emailValue = props.emailValue;
   let selectedCampus = props.campusId;
 
+  console.log(selectedCampus);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -22,6 +24,7 @@ export default function NewStudent (props) {
                 id="nameValue"
                 type="text"
                 required
+                placeholder="Your name"
                 onChange={handleChange}
                 value={nameValue}
               />
@@ -32,8 +35,9 @@ export default function NewStudent (props) {
             <div>
               <input
                 id="emailValue"
-                type="text"
+                type="email"
                 required
+                placeholder="Enter a valid email address"
                 onChange={handleChange}
                 value={emailValue}
               />
@@ -46,9 +50,8 @@ export default function NewStudent (props) {
                 className="form-control"
                 id="campus"
                 required
-                value={selectedCampus !== 0 ? selectedCampus : top}
+                value={selectedCampus !== 0 ? selectedCampus : null}
                 onChange={handleChange}>
-                  <option value="top">choose:</option>
                   {
                     campusList && campusList.map(campus => (
                       <option key={campus.id} value={campus.id}>{campus.name}</option>

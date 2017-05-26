@@ -10,6 +10,7 @@ export default function Campus (props) {
     let nameValue = props.nameValue;
     let locationValue = props.locationValue;
     let descriptionValue = props.descriptionValue;
+    let students = props.students;
 
     return (
       <div>
@@ -70,8 +71,8 @@ export default function Campus (props) {
               <p>Students:</p>
               <ul>
               {
-                selectedCampus.students && selectedCampus.students.map(student => (
-                    <li key={ student.id }><Link to={`/student/${student.id}`}>{ student.name }</Link> <span className="del-button" onClick={ () => props.removeStudent(student.id) }><i className="fa fa-trash"></i></span></li>
+                students && students.map(student => (
+                    <li key={ student.id }><Link to={`/student/${student.id}`}>{ student.name }</Link> <span className="del-button"><i className="fa fa-trash" id={ student.id } onClick={handleChange}></i></span></li>
                 ))
               }
               </ul>

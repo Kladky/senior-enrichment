@@ -54,14 +54,6 @@ export default function (state = initialStudentState, action) {
 export const removeStudent = id => dispatch => {
   dispatch(deleteStudent(id));
   axios.delete(`/api/students/${id}`)
-  .then (() => {
-    //update the campuses list on the state:
-    axios.get('/api/campuses')
-    .then(response => response.data)
-    .then(campuses => {
-      dispatch(getCampuses(campuses))
-    })
-  })
   .catch(err => console.error(`Removing student: ${id} unsuccessful`, err));
 };
 
@@ -73,6 +65,7 @@ export const createStudent = studentInfo => dispatch => {
     .then(students => {
       dispatch(getStudents(students))
     })
+    dispatch(getCampusById(studentInfo.campusId))
   })
   .catch(err => console.error(`Adding student: ${studentInfo.name} unsuccessful`, err));
 };
