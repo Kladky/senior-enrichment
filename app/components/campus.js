@@ -69,8 +69,8 @@ export default function Campus (props) {
         <div>
             <div>
               <h2>Campus details:</h2>
-              <p>Location: { selectedCampus.location }</p>
-              <p>Description: { selectedCampus.description }</p>
+              <p>Location: { selectedCampus.location || "no location?!?!" }</p>
+              <p>Description: { selectedCampus.description || "no description?!?!" }</p>
               <p>Students:</p>
               <ul>
               {
