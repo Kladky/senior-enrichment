@@ -49,7 +49,7 @@ export default function (state = initialCampusState, action) {
 export const removeCampus = id => dispatch => {
   dispatch(deleteCampus(id));
   axios.delete(`/api/campuses/${id}`)
-       .catch(err => console.error(`Removing campus: ${id} unsuccessful`, err));
+  .catch(err => console.error(`Removing campus: ${id} unsuccessful`, err));
 };
 
 export const createCampus = campusInfo => dispatch => {
