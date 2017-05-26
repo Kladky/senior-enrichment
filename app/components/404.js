@@ -7,7 +7,7 @@ export default function WrongPage (props) {
       <h1>????????????????</h1>
       <p>page not found!</p>
       <img src="/404.gif" />
-      <p>Did you meant to go to <Link to="/campuses">campuses</Link> or <Link to="/students">students</Link>?</p>
+      <p>Did you mean to go to <Link to="/campuses">campuses</Link> or <Link to="/students">students</Link>?</p>
       </div>
     );
 }
