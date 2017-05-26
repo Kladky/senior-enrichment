@@ -120,6 +120,24 @@ fieldset {
   color: #A2D5EF;
 }
 
+/* -------------- LIST STYLES -------------- */
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 5px;
+    list-style:;
+}
+
+li:before {
+    content: "»";
+    padding-right: 8px;
+}
+
 /* -------------- ICON STYLES -------------- */
 
 .hide {
@@ -127,11 +145,7 @@ fieldset {
 }
 
 li a, li span {
-    padding-right: 5px;
-}
-
-li span, .del-button {
-    padding-left: 5px;
+    padding: 0 5px;
 }
 
 li span:hover {
