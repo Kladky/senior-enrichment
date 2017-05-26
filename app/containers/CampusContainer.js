@@ -70,6 +70,7 @@ class CampusContainer extends Component {
     }
     if(evt.target.tagName === "I") {
         let newStudentList = this.state.students.filter(student => student.id != evt.target.id);
+        console.log(newStudentList);
         this.setState({
             students: newStudentList
         });
